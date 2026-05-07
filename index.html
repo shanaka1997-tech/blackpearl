@@ -3,9 +3,709 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BlackPearl - Online Shipping Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #001a4d 0%, #003d99 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #001a4d 0%, #003d99 100%);
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #FFD700;
+            color: #001a4d;
+            padding: 12px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #001a4d;
+        }
+
+        /* About Section */
+        .about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: #003d99;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #003d99, #0066cc);
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        /* Packages Section */
+        .packages {
+            background: #fff;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .package-card {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .package-card h3 {
+            font-size: 1.5rem;
+            color: #003d99;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            color: #FFD700;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .package-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .package-features li {
+            padding: 0.5rem 0;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+
+        .package-features li:before {
+            content: "✓ ";
+            color: #FFD700;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: #f8f9fa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            background: linear-gradient(135deg, #003d99, #0066cc);
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: #fff;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #FFD700;
+        }
+
+        .testimonial-text {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #003d99;
+        }
+
+        .rating {
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* FAQs Section */
+        .faqs {
+            background: #f8f9fa;
+        }
+
+        .faq-item {
+            background: #fff;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            background: #003d99;
+            color: #fff;
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #001a4d;
+        }
+
+        .faq-answer {
+            padding: 1.5rem;
+            color: #666;
+            display: none;
+            background: #fff;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #fff;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            color: #003d99;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item strong {
+            color: #003d99;
+        }
+
+        .contact-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #003d99;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+            box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #001a4d 0%, #003d99 100%);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">BlackPearl</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#packages">Packages</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#faqs">FAQs</a></li>
+                    <li><a href="#book" class="cta-button">Book Now</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Welcome to BlackPearl</h1>
+            <p>Your trusted partner for fast and reliable online shipping services worldwide</p>
+            <a href="#packages" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Why Choose BlackPearl?</h3>
+                    <p>BlackPearl is a leading online shipping company dedicated to delivering your packages safely and on time. With over 10 years of experience, we've built a reputation for excellence.</p>
+                    <p>Our commitment to customer satisfaction means we handle every shipment with care and precision. From local to international deliveries, we've got you covered.</p>
+                    <p>We use advanced tracking technology to ensure you always know where your package is. Our team is available 24/7 to answer your questions and resolve any concerns.</p>
+                </div>
+                <div class="about-image">
+                    <span>BlackPearl Shipping Services</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="packages">
+        <div class="container">
+            <h2>Our Shipping Packages</h2>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <h3>Standard Delivery</h3>
+                    <div class="price">$9.99</div>
+                    <ul class="package-features">
+                        <li>Delivery within 5-7 business days</li>
+                        <li>Up to 30 kg weight</li>
+                        <li>Basic tracking</li>
+                        <li>Domestic delivery</li>
+                    </ul>
+                    <a href="#book" class="cta-button">Choose Plan</a>
+                </div>
+
+                <div class="package-card">
+                    <h3>Express Delivery</h3>
+                    <div class="price">$24.99</div>
+                    <ul class="package-features">
+                        <li>Delivery within 2-3 business days</li>
+                        <li>Up to 50 kg weight</li>
+                        <li>Real-time tracking</li>
+                        <li>Domestic & International</li>
+                    </ul>
+                    <a href="#book" class="cta-button">Choose Plan</a>
+                </div>
+
+                <div class="package-card">
+                    <h3>Premium Express</h3>
+                    <div class="price">$49.99</div>
+                    <ul class="package-features">
+                        <li>Overnight delivery</li>
+                        <li>Up to 100 kg weight</li>
+                        <li>GPS tracking with updates</li>
+                        <li>Priority handling</li>
+                    </ul>
+                    <a href="#book" class="cta-button">Choose Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Our Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">Package 1</div>
+                <div class="gallery-item">Package 2</div>
+                <div class="gallery-item">Package 3</div>
+                <div class="gallery-item">Package 4</div>
+                <div class="gallery-item">Package 5</div>
+                <div class="gallery-item">Package 6</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">"BlackPearl delivered my package on time and in perfect condition. Their customer service is outstanding!"</p>
+                    <div class="testimonial-author">- Sarah Johnson</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">"I've been using BlackPearl for over a year. Reliable, affordable, and excellent tracking system."</p>
+                    <div class="testimonial-author">- Michael Chen</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">"Best shipping service I've ever used. Fast delivery and great communication throughout the process."</p>
+                    <div class="testimonial-author">- Emma Williams</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section id="faqs" class="faqs">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What are your shipping rates?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">Our rates depend on the package weight, destination, and delivery speed. Standard delivery starts at $9.99, Express at $24.99, and Premium Express at $49.99. Contact us for custom quotes on bulk shipments.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How do I track my package?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">All packages include tracking. Once your shipment is dispatched, you'll receive a tracking number via email. You can use this number on our website to get real-time updates on your package location.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Do you offer international shipping?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">Yes! We offer international shipping through our Express Delivery and Premium Express packages. We ship to over 150 countries worldwide. International delivery times vary by destination.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What's your return and refund policy?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">We offer a 100% refund if your package doesn't arrive within the promised timeframe. You can request a refund within 30 days of purchase. Our team will investigate and process your refund promptly.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I insure my package?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">Yes, we offer optional package insurance for an additional fee. This covers loss, damage, and theft. Insurance can be added during checkout when you book your shipment.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-item">
+                        <strong>Email:</strong><br>
+                        support@blackpearl.com
+                    </div>
+                    <div class="contact-item">
+                        <strong>Phone:</strong><br>
+                        +1 (800) 555-0123
+                    </div>
+                    <div class="contact-item">
+                        <strong>Address:</strong><br>
+                        123 Shipping Lane<br>
+                        Port City, PC 12345<br>
+                        United States
+                    </div>
+                    <div class="contact-item">
+                        <strong>Hours:</strong><br>
+                        Monday - Friday: 8:00 AM - 8:00 PM<br>
+                        Saturday - Sunday: 9:00 AM - 6:00 PM<br>
+                        (All times in EST)
+                    </div>
+                </div>
+
+                <form class="contact-form" id="book">
+                    <h3 style="margin-bottom: 1.5rem; color: #003d99;">Send us a Message</h3>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 BlackPearl Shipping Services. All rights reserved.</p>
+            <p>Fast | Reliable | Trustworthy</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('active');
+                    item.previousElementSibling.querySelector('.faq-toggle').textContent = '+';
+                }
+            });
+
+            // Toggle current FAQ
+            answer.classList.toggle('active');
+            toggle.textContent = answer.classList.contains('active') ? '−' : '+';
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
